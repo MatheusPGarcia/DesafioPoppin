@@ -31,6 +31,15 @@ class MainViewController: UIViewController {
         }
     }
 
+    func presentDetails(for movie: Movie) {
+
+        let detailIdentifier = "MovieDetailsStoryboard"
+
+        let mainView = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = mainView.instantiateViewController(withIdentifier: detailIdentifier)
+        self.present(destinationVC, animated: true, completion: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,5 +97,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.movie = cellMovie
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let selectedMovie = moviesResponse.movies[indexPath.row]
+        presentDetails(for: selectedMovie)
     }
 }
