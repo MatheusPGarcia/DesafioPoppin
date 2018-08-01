@@ -15,6 +15,12 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let movieId = movieId {
+            let controller = MovieController()
+            controller.searchForDetailsById(searchFor: movieId) { (movieDetails) in
+                print(movieDetails)
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
