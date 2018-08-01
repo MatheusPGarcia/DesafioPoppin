@@ -9,7 +9,7 @@
 import Foundation
 
 struct Movies: Decodable {
-    var movies: [Movie]
+    var movies = [Movie]()
 }
 
 extension Movies {
