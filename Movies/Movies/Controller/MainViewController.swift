@@ -85,8 +85,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
         let cellMovie = moviesResponse.movies[indexPath.row]
 
-        cell.name = cellMovie.title
-        cell.year = cellMovie.year
+        cell.movie = cellMovie
 
         return cell
     }

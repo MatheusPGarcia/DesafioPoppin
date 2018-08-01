@@ -6,7 +6,7 @@
 //  Copyright © 2018 poppin 2018. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // This class will handle the connection between the viewController and all the Service functions
 class MovieController: NSObject {
@@ -25,6 +25,16 @@ class MovieController: NSObject {
             Parser.parseMoviesSearch(forData: data, completion: { (movies) in
                 completion(movies)
             })
+        }
+    }
+
+    func getImageByUrl(urlString: String, completion: @escaping (UIImage) -> Void) {
+
+        guard let url = URL(string: urlString) else { return }
+
+        NetworkConnection.fetch(url: url) { (data) in
+            guard let image = UIImage(data: data) else { return }
+            completion(image)
         }
     }
 }
