@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
         }
     }
 
+    // This func is responsable to present the Details View Controller
     func presentDetails(for movie: Movie) {
 
         let detailIdentifier = "MovieDetailsStoryboard"

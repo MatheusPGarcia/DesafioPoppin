@@ -17,7 +17,29 @@
                     <view key="view" contentMode="scaleToFill" id="kvS-SY-UJ7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gzr-or-0d1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cGl-nB-Zq9"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="FvW-yl-mQJ">
+                                        <barButtonItem key="leftBarButtonItem" title="Go Back" id="aF5-0Y-DO0">
+                                            <connections>
+                                                <action selector="goBackWasPressed:" destination="nn1-3M-RmE" id="NPU-5e-sgj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gzr-or-0d1" firstAttribute="trailing" secondItem="Zce-1J-bLq" secondAttribute="trailing" id="Nnz-hv-4na"/>
+                            <constraint firstItem="Gzr-or-0d1" firstAttribute="top" secondItem="Zce-1J-bLq" secondAttribute="top" id="X3n-EW-MJT"/>
+                            <constraint firstItem="Gzr-or-0d1" firstAttribute="leading" secondItem="Zce-1J-bLq" secondAttribute="leading" id="zdu-Nx-jSn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Zce-1J-bLq"/>
                     </view>
                 </viewController>
