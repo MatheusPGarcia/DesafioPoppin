@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
 
+    var moviesResponse = Movies()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -52,5 +54,27 @@ extension MainViewController: UISearchBarDelegate {
 
         // It's necessary to remove all gesture recognizer or the interaction with the view will be harmed
         view.gestureRecognizers?.removeAll()
+    }
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return moviesResponse.movies.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cellIdentifier = "MovieTableViewCell"
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MovieTableViewCell else {
+            fatalError("Unable to dequeueReusableCell cast")
+        }
+
+        let cellMovie = moviesResponse.movies[indexPath.row]
+
+        cell.name = cellMovie.title
+        cell.year = cellMovie.year
+
+        return cell
     }
 }
