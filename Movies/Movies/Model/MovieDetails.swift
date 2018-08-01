@@ -10,20 +10,22 @@ import Foundation
 
 struct MovieDetails: Decodable {
 
-    let title: String
-    let released: String
-    let rated: String
-    let genre: String
-    let director: String
-    let writer: String
-    let plot: String
-    let imageUrl: String
+    let title: String?
+    let released: String?
+    let rated: String?
+    let genre: String?
+    let director: String?
+    let writer: String?
+    let plot: String?
+    let imageUrl: String?
     let ratings: [Rating]
 }
 
 // Extension to match the codingKeys from the jsonResponse with the struct elements.
 extension MovieDetails {
     enum StructKeys: String, CodingKey {
+        //It's necessary to disable swiftlint identifier_name in this case because enum cases are formatted to match the api json keys
+        // swiftlint:disable identifier_name
         case Title
         case Released
         case Rated
@@ -33,6 +35,7 @@ extension MovieDetails {
         case Plot
         case Poster
         case Ratings
+        // swiftlint:enable identifier_name
     }
 
     init(from decoder: Decoder) throws {
