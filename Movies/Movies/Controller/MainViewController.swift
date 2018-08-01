@@ -1,11 +1,14 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Movies
+//
+//  Created by Matheus Garcia on 01/08/18.
+//  Copyright © 2018 poppin 2018. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,5 +19,4 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
