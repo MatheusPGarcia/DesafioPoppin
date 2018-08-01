@@ -106,5 +106,13 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="111.99400299850076"/>
         </scene>
+        <!--MovieDetailsStoryboard-->
+        <scene sceneID="AG8-u6-7zr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieDetails" referencedIdentifier="MovieDetailsStoryboard" id="gLl-J7-RWb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRB-DR-mUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="671" y="112"/>
+        </scene>
     </scenes>
 </document>
