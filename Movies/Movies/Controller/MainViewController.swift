@@ -10,6 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,4 +21,8 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+extension MainViewController: UISearchBarDelegate {
+
 }
