@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NetworkConnection {
+class NetworkConnection {
 
     // This func will be used to fetch all data
     class func fetch(url: URL, completion: @escaping (Data) -> Void) {
