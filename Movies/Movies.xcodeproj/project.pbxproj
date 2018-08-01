@@ -17,6 +17,7 @@
 		AE69CCC82111D73C007914BB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE69CCC72111D73C007914BB /* MainViewController.swift */; };
 		AE7C1BC72111E054000F34AA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1BC62111E054000F34AA /* Movie.swift */; };
 		AE7C1BCA2111E25A000F34AA /* UrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1BC92111E25A000F34AA /* UrlFormatter.swift */; };
+		AE7C1BCE2111E3F2000F34AA /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1BCD2111E3F2000F34AA /* NetworkConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AE69CCC72111D73C007914BB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AE7C1BC62111E054000F34AA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		AE7C1BC92111E25A000F34AA /* UrlFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlFormatter.swift; sourceTree = "<group>"; };
+		AE7C1BCD2111E3F2000F34AA /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		AE69CCCB2111D7C1007914BB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				AE7C1BCD2111E3F2000F34AA /* NetworkConnection.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7C1BCA2111E25A000F34AA /* UrlFormatter.swift in Sources */,
+				AE7C1BCE2111E3F2000F34AA /* NetworkConnection.swift in Sources */,
 				5B19329C2108CABE00B505AF /* AppDelegate.swift in Sources */,
 				AE69CCC82111D73C007914BB /* MainViewController.swift in Sources */,
 				AE7C1BC72111E054000F34AA /* Movie.swift in Sources */,
