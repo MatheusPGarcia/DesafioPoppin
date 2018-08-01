@@ -11,12 +11,24 @@ import UIKit
 class MainViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
-
+    @IBOutlet weak var moviesResponseTableView: UITableView!
+    
     var moviesResponse = Movies()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    // This func is called whenever a new search is wanted by the user
+    func searchForMovies(byTitle title: String) {
+        let controller = MovieController()
+        controller.searchForMoviesByName(searchFor: title) { (movies) in
+            DispatchQueue.main.async {
+                self.moviesResponse = movies
+                self.moviesResponseTableView.reloadData()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +43,7 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 
         if let searchBarText = searchBar.text {
-            // TODO: Handle search
+            searchForMovies(byTitle: searchBarText)
         }
 
         hideKeyboard()
@@ -57,6 +69,7 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
+// Extension to handle tabbar operations
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesResponse.movies.count
@@ -72,8 +85,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
         let cellMovie = moviesResponse.movies[indexPath.row]
 
-        cell.name = cellMovie.title
-        cell.year = cellMovie.year
+        cell.movie = cellMovie
 
         return cell
     }
