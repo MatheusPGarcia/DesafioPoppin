@@ -31,14 +31,21 @@ class MainViewController: UIViewController {
         }
     }
 
-    // This func is responsable to present the Details View Controller
+    // This func will be responsable to intanciate a new viewController of the type details to show
+    // details about the tableView's selected movie
     func presentDetails(for movie: Movie) {
 
-        let detailIdentifier = "MovieDetailsStoryboard"
-
         let mainView = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = mainView.instantiateViewController(withIdentifier: detailIdentifier)
-        self.present(destinationVC, animated: true, completion: nil)
+
+        // Instanciate a new viewController of type details
+        let detailIdentifier = "MovieDetailsStoryboard"
+        guard let destination = mainView.instantiateViewController(withIdentifier: detailIdentifier) as? MovieDetailsViewController else {
+            fatalError("Unable to instantiate ViewController with identifier: \(detailIdentifier)")
+        }
+
+        destination.movieId = movie.imdbId
+
+        self.present(destination, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
