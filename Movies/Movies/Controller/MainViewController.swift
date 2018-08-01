@@ -23,6 +23,13 @@ class MainViewController: UIViewController {
     }
 }
 
+// Extension to handle SearchBar activities
 extension MainViewController: UISearchBarDelegate {
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+
+        if let searchBarText = searchBar.text {
+            // TODO: Handle search
+        }
+    }
 }
