@@ -31,5 +31,26 @@ extension MainViewController: UISearchBarDelegate {
         if let searchBarText = searchBar.text {
             // TODO: Handle search
         }
+
+        hideKeyboard()
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        setToHideKeyboardWhenTapperAround()
+    }
+
+    func setToHideKeyboardWhenTapperAround() {
+
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func hideKeyboard() {
+        searchBar.endEditing(true)
+
+        // It's necessary to remove all gesture recognizer or the interaction with the view will be harmed
+        view.gestureRecognizers?.removeAll()
     }
 }
