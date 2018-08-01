@@ -10,15 +10,25 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    var name: String?
+    var year: String?
 
-        // Configure the view for the selected state
+    override func layoutSubviews() {
+
+        if let name = name {
+            titleLabel.text = name
+        } else {
+            titleLabel.text = "Title not provided by the api"
+        }
+
+        if let year = year {
+            yearLabel.text = year
+        } else {
+            yearLabel.text = "Year not provided by the api"
+        }
     }
 
 }
