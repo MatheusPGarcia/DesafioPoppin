@@ -15,8 +15,8 @@ class MovieController: NSObject {
 
         let parameterKey = "s"
 
-        let formater = UrlFormatter(parameterKey: parameterKey, parameterValue: parametherValue)
-        let url = formater.getUrlToRequest()
+        let formatter = UrlFormatter(parameterKey: parameterKey, parameterValue: parametherValue)
+        let url = formatter.getUrlToRequest()
 
         // First make the request to get data
         NetworkConnection.fetch(url: url) { (data) in
@@ -24,6 +24,23 @@ class MovieController: NSObject {
             // With the data try to parse the json into Movie objects
             Parser.parseMoviesSearch(forData: data, completion: { (movies) in
                 completion(movies)
+            })
+        }
+    }
+
+    func searchForDetailsById(searchFor parametherValue: String, completion: @escaping (MovieDetails) -> Void) {
+
+        let parameterKey = "i"
+
+        let formatter = UrlFormatter(parameterKey: parameterKey, parameterValue: parametherValue)
+        let url = formatter.getUrlToRequest()
+
+        // First make the request to get data
+        NetworkConnection.fetch(url: url) { (data) in
+
+            // With the data try to parse the json into MovieDetails objects
+            Parser.parseMovieDetails(forData: data, completion: { (movieDetails) in
+                completion(movieDetails)
             })
         }
     }
