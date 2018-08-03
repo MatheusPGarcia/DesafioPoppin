@@ -24,32 +24,29 @@ struct MovieDetails: Decodable {
 // Extension to match the codingKeys from the jsonResponse with the struct elements.
 extension MovieDetails {
     enum StructKeys: String, CodingKey {
-        //It's necessary to disable swiftlint identifier_name in this case because enum cases are formatted to match the api json keys
-        // swiftlint:disable identifier_name
-        case Title
-        case Released
-        case Rated
-        case Genre
-        case Director
-        case Writer
-        case Plot
-        case Poster
-        case Ratings
-        // swiftlint:enable identifier_name
+        case title = "Title"
+        case released = "Released"
+        case rated = "Rated"
+        case genre = "Genre"
+        case director = "Director"
+        case writer = "Writer"
+        case plot = "Plot"
+        case poster = "Poster"
+        case ratings = "Ratings"
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: StructKeys.self)
 
-        let title: String = try container.decode(String.self, forKey: .Title)
-        let released: String = try container.decode(String.self, forKey: .Released)
-        let rated: String = try container.decode(String.self, forKey: .Rated)
-        let genre: String = try container.decode(String.self, forKey: .Genre)
-        let director: String = try container.decode(String.self, forKey: .Director)
-        let writer: String = try container.decode(String.self, forKey: .Writer)
-        let plot: String = try container.decode(String.self, forKey: .Plot)
-        let poster: String = try container.decode(String.self, forKey: .Poster)
-        let ratings: [Rating] = try container.decode([Rating].self, forKey: .Ratings)
+        let title: String = try container.decode(String.self, forKey: .title)
+        let released: String = try container.decode(String.self, forKey: .released)
+        let rated: String = try container.decode(String.self, forKey: .rated)
+        let genre: String = try container.decode(String.self, forKey: .genre)
+        let director: String = try container.decode(String.self, forKey: .director)
+        let writer: String = try container.decode(String.self, forKey: .writer)
+        let plot: String = try container.decode(String.self, forKey: .plot)
+        let poster: String = try container.decode(String.self, forKey: .poster)
+        let ratings: [Rating] = try container.decode([Rating].self, forKey: .ratings)
 
         self.title = title
         self.released = released
