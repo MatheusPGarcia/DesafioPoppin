@@ -10,18 +10,21 @@ import UIKit
 
 class MovieDetailsInfoTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var key: UILabel!
-    @IBOutlet weak var value: UILabel!
+    @IBOutlet weak var keyLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var detail: (String, String?)?
+
+    override func layoutSubviews() {
+
+        guard let detail = detail else { return }
+
+        keyLabel.text = detail.0
+
+        if let value = detail.1 {
+            valueLabel.text = value
+        } else {
+            valueLabel.text = "Information not provided by the API"
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
