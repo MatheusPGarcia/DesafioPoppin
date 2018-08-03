@@ -12,12 +12,17 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var moviesResponseTableView: UITableView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusImage: UIImageView!
     
     var moviesResponse = Movies()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        moviesResponseTableView.isHidden = true
+        statusImage.image = UIImage(named: "Search")
+        statusLabel.text = "Use the search bar to find a movie"
     }
 
     // This func is called whenever a new search is wanted by the user

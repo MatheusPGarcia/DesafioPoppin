@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,6 +94,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1kr-6O-ajd"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBb-EE-BQG">
+                                <rect key="frame" x="15" y="332" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qpd-Js-dos">
+                                <rect key="frame" x="137.5" y="217" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="LYl-PU-Ypt"/>
+                                    <constraint firstAttribute="width" secondItem="qpd-Js-dos" secondAttribute="height" multiplier="1:1" id="qXn-td-Q1X"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -100,15 +114,22 @@
                             <constraint firstItem="NFG-BH-lrV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2bd-nk-gLf"/>
                             <constraint firstItem="NFG-BH-lrV" firstAttribute="top" secondItem="9zv-wk-v7A" secondAttribute="bottom" id="7Fn-OW-fC4"/>
                             <constraint firstItem="9zv-wk-v7A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="K2J-85-WLs"/>
+                            <constraint firstItem="aBb-EE-BQG" firstAttribute="top" secondItem="qpd-Js-dos" secondAttribute="bottom" constant="15" id="M8e-k2-sgV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NFG-BH-lrV" secondAttribute="bottom" id="Qkw-Ao-STq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aBb-EE-BQG" secondAttribute="trailing" constant="15" id="dnc-fH-1Jc"/>
+                            <constraint firstItem="qpd-Js-dos" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nOe-JY-WSE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9zv-wk-v7A" secondAttribute="trailing" id="p1C-2k-Lf0"/>
                             <constraint firstItem="9zv-wk-v7A" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pYX-bc-0ny"/>
+                            <constraint firstItem="qpd-Js-dos" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.8" id="wyE-p5-K85"/>
+                            <constraint firstItem="aBb-EE-BQG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="yCv-uZ-9Xc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="moviesResponseTableView" destination="NFG-BH-lrV" id="FXR-4l-eJH"/>
                         <outlet property="searchBar" destination="9zv-wk-v7A" id="AGf-hG-SKL"/>
+                        <outlet property="statusImage" destination="qpd-Js-dos" id="dj0-dS-yPw"/>
+                        <outlet property="statusLabel" destination="aBb-EE-BQG" id="vwc-hf-cgY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
