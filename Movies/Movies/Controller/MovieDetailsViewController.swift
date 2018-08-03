@@ -10,8 +10,10 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
 
-    var movieId: String?
+    @IBOutlet weak var detailsTableView: UITableView!
 
+    var movieId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,5 +33,15 @@ class MovieDetailsViewController: UIViewController {
     
     @IBAction func goBackWasPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }
