@@ -23,6 +23,19 @@ class Parser: NSObject {
         }
     }
 
+    class func parseMovieDetails(forData data: Data, completion: @escaping (MovieDetails) -> Void) {
+
+        do {
+            let decoder = JSONDecoder()
+            var detailsResponse = try decoder.decode(MovieDetails.self, from: data)
+            detailsResponse = treatDetails(detailsResponse)
+            completion(detailsResponse)
+        } catch {
+            // TODO: Handle error in decoding Json
+            print("Error decoding Json: \(error)")
+        }
+    }
+
     // When the API doesn't have an information they will return the value "N/A" for the key
     // in this func the movie type will be treated to have value nil instead of "N/A"
     private class func handleNilForMovies(_ movies: Movies) -> [Movie] {
@@ -45,6 +58,30 @@ class Parser: NSObject {
         let imageUrl = treatField(movie.imageUrl!)
 
         let newMovie = Movie(title: title, year: year, imageUrl: imageUrl, imdbId: imdbId)
+        return newMovie
+    }
+
+    // This func receives MovieDetails with "N/A" fields and return the object with "N/A" replaced for nil
+    private class func treatDetails(_ movie: MovieDetails) -> MovieDetails {
+        let title = treatField(movie.title!)
+        let released = treatField(movie.released!)
+        let rated = treatField(movie.rated!)
+        let genre = treatField(movie.genre!)
+        let director = treatField(movie.director!)
+        let writer = treatField(movie.writer!)
+        let plot = treatField(movie.plot!)
+        let imageUrl = treatField(movie.imageUrl!)
+
+        let newMovie = MovieDetails(title: title,
+                                    released: released,
+                                    rated: rated,
+                                    genre: genre,
+                                    director: director,
+                                    writer: writer,
+                                    plot: plot,
+                                    imageUrl: imageUrl,
+                                    ratings: movie.ratings)
+
         return newMovie
     }
 

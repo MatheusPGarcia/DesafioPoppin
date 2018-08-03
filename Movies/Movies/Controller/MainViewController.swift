@@ -31,6 +31,23 @@ class MainViewController: UIViewController {
         }
     }
 
+    // This func will be responsable to intanciate a new viewController of the type details to show
+    // details about the tableView's selected movie
+    func presentDetails(for movie: Movie) {
+
+        let mainView = UIStoryboard(name: "Main", bundle: nil)
+
+        // Instanciate a new viewController of type details
+        let detailIdentifier = "MovieDetailsStoryboard"
+        guard let destination = mainView.instantiateViewController(withIdentifier: detailIdentifier) as? MovieDetailsViewController else {
+            fatalError("Unable to instantiate ViewController with identifier: \(detailIdentifier)")
+        }
+
+        destination.movieId = movie.imdbId
+
+        self.present(destination, animated: true, completion: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,5 +105,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.movie = cellMovie
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let selectedMovie = moviesResponse.movies[indexPath.row]
+        presentDetails(for: selectedMovie)
     }
 }
