@@ -10,17 +10,16 @@ import UIKit
 
 class MovieDetailsHeaderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var titleLabel: UILabel!
+
+    var title: String?
+
+    override func layoutSubviews() {
+
+        if let title = title {
+            titleLabel.text = title
+        } else {
+            titleLabel.text = ""
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
