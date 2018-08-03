@@ -12,14 +12,4 @@ class MovieDetailsRatingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-
-    var rating: Rating?
-
-    override func layoutSubviews() {
-
-        guard let rating = rating else { return }
-
-        authorLabel.text = rating.source
-        ratingLabel.text = rating.value
-    }
 }

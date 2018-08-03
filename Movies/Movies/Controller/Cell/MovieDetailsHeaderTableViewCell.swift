@@ -11,15 +11,4 @@ import UIKit
 class MovieDetailsHeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-
-    var title: String?
-
-    override func layoutSubviews() {
-
-        if let title = title {
-            titleLabel.text = title
-        } else {
-            titleLabel.text = ""
-        }
-    }
 }

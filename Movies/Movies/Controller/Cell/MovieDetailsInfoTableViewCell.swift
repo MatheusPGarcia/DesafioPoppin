@@ -12,19 +12,4 @@ class MovieDetailsInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-
-    var detail: (String, String?)?
-
-    override func layoutSubviews() {
-
-        guard let detail = detail else { return }
-
-        keyLabel.text = detail.0
-
-        if let value = detail.1 {
-            valueLabel.text = value
-        } else {
-            valueLabel.text = "Information not provided by the API"
-        }
-    }
 }
