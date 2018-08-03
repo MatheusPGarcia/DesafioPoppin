@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Rating: Codable {
+struct Rating: Decodable {
     var source: String
     var value: String
 }
