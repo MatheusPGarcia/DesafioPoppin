@@ -35,7 +35,7 @@ class MovieTableViewCell: UITableViewCell {
         if let imageUrl = movie.imageUrl {
             setImagePoster(imageUrl)
         } else {
-            self.posterImage.image = nil
+            self.posterImage.image = UIImage(named: "NoImageAvaible")
         }
     }
 
