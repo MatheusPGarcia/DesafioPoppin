@@ -10,6 +10,8 @@ import UIKit
 
 class MovieDetailsHeaderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var title: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

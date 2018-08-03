@@ -10,6 +10,9 @@ import UIKit
 
 class MovieDetailsRatingTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var rating: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

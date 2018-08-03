@@ -10,6 +10,9 @@ import UIKit
 
 class MovieDetailsInfoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var key: UILabel!
+    @IBOutlet weak var value: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
