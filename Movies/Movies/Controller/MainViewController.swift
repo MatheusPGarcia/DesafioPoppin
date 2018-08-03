@@ -30,6 +30,17 @@ class MainViewController: UIViewController {
         let controller = MovieController()
         controller.searchForMoviesByName(searchFor: title) { (movies) in
             DispatchQueue.main.async {
+
+                guard let movies = movies else {
+                    self.statusLabel.text = "Movie not found"
+                    self.statusImage.image = UIImage(named: "NoResult")
+                    return
+                }
+
+                self.statusImage.isHidden = true
+                self.statusLabel.isHidden = true
+                self.moviesResponseTableView.isHidden = false
+                
                 self.moviesResponse = movies
                 self.moviesResponseTableView.reloadData()
             }

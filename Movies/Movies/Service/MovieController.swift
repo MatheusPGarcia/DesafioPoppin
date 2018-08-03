@@ -11,7 +11,7 @@ import UIKit
 // This class will handle the connection between the viewController and all the Service functions
 class MovieController: NSObject {
 
-    func searchForMoviesByName(searchFor parametherValue: String, completion: @escaping (Movies) -> Void) {
+    func searchForMoviesByName(searchFor parametherValue: String, completion: @escaping (Movies?) -> Void) {
 
         let parameterKey = "s"
 
