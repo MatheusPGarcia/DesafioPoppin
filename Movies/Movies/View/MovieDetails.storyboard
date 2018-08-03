@@ -169,8 +169,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="author" destination="VOo-L4-H1H" id="y1L-a2-sBX"/>
-                                            <outlet property="rating" destination="PqI-ay-t4v" id="UAZ-LW-N85"/>
+                                            <outlet property="authorLabel" destination="VOo-L4-H1H" id="y1L-a2-sBX"/>
+                                            <outlet property="ratingLabel" destination="PqI-ay-t4v" id="UAZ-LW-N85"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

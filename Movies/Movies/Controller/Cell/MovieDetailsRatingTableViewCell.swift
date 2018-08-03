@@ -10,18 +10,16 @@ import UIKit
 
 class MovieDetailsRatingTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var author: UILabel!
-    @IBOutlet weak var rating: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+
+    var rating: Rating?
+
+    override func layoutSubviews() {
+
+        guard let rating = rating else { return }
+
+        authorLabel.text = rating.source
+        ratingLabel.text = rating.value
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
