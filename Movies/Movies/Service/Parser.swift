@@ -10,7 +10,7 @@ import Foundation
 
 class Parser: NSObject {
 
-    class func parseMoviesSearch(forData data: Data, completion: @escaping (Movies) -> Void) {
+    class func parseMoviesSearch(forData data: Data, completion: @escaping (Movies?) -> Void) {
 
         do {
             let decoder = JSONDecoder()
@@ -18,8 +18,8 @@ class Parser: NSObject {
             moviesResponse.movies = handleNilForMovies(moviesResponse)
             completion(moviesResponse)
         } catch {
-            // TODO: Handle error in decoding Json
             print("Error decoding Json: \(error)")
+            completion(nil)
         }
     }
 
