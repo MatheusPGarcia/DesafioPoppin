@@ -27,11 +27,22 @@ class MainViewController: UIViewController {
 
     // This func is called whenever a new search is wanted by the user
     func searchForMovies(byTitle title: String) {
+
+        let connection = Reachability.isConnectedToNetwork()
+        if !connection {
+            self.statusLabel.text = "Check your internet connection"
+            self.statusImage.image = UIImage(named: "NoWifi")
+        }
+
         let controller = MovieController()
         controller.searchForMoviesByName(searchFor: title) { (movies) in
             DispatchQueue.main.async {
 
                 guard let movies = movies else {
+                    self.moviesResponseTableView.isHidden = true
+                    self.statusLabel.isHidden = false
+                    self.statusImage.isHidden = false
+                    
                     self.statusLabel.text = "Movie not found"
                     self.statusImage.image = UIImage(named: "NoResult")
                     return

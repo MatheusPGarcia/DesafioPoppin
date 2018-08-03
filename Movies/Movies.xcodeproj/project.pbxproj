@@ -29,6 +29,7 @@
 		AE7C1C1F2114B52A000F34AA /* MovieDetailsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1C1E2114B52A000F34AA /* MovieDetailsHeaderTableViewCell.swift */; };
 		AE7C1C212114B544000F34AA /* MovieDetailsInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1C202114B544000F34AA /* MovieDetailsInfoTableViewCell.swift */; };
 		AE7C1C232114B556000F34AA /* MovieDetailsRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1C222114B556000F34AA /* MovieDetailsRatingTableViewCell.swift */; };
+		AE7C1C252114E966000F34AA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1C242114E966000F34AA /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		AE7C1C1E2114B52A000F34AA /* MovieDetailsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AE7C1C202114B544000F34AA /* MovieDetailsInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsInfoTableViewCell.swift; sourceTree = "<group>"; };
 		AE7C1C222114B556000F34AA /* MovieDetailsRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRatingTableViewCell.swift; sourceTree = "<group>"; };
+		AE7C1C242114E966000F34AA /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7C1BC92111E25A000F34AA /* UrlFormatter.swift */,
+				AE7C1C242114E966000F34AA /* Reachability.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				5B19329C2108CABE00B505AF /* AppDelegate.swift in Sources */,
 				AE69CCC82111D73C007914BB /* MainViewController.swift in Sources */,
 				AE7C1C232114B556000F34AA /* MovieDetailsRatingTableViewCell.swift in Sources */,
+				AE7C1C252114E966000F34AA /* Reachability.swift in Sources */,
 				AE7C1BC72111E054000F34AA /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
