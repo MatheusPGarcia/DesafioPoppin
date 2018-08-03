@@ -36,6 +36,34 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AM-1t-3b0">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="mrj-xI-u9c">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gbb-0L-8ox">
+                                            <rect key="frame" x="15" y="15" width="345" height="45"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1s-RT-fLW">
+                                            <rect key="frame" x="107" y="70" width="160" height="230"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="230" id="SmQ-rq-cfr"/>
+                                                <constraint firstAttribute="width" constant="160" id="nWD-T1-ypP"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Gbb-0L-8ox" firstAttribute="leading" secondItem="mrj-xI-u9c" secondAttribute="leading" constant="15" id="2Ge-YU-1dy"/>
+                                        <constraint firstItem="c1s-RT-fLW" firstAttribute="centerX" secondItem="mrj-xI-u9c" secondAttribute="centerX" id="DzS-jI-Mr0"/>
+                                        <constraint firstAttribute="bottom" secondItem="c1s-RT-fLW" secondAttribute="bottom" constant="10" id="LSG-B8-O92"/>
+                                        <constraint firstAttribute="trailing" secondItem="Gbb-0L-8ox" secondAttribute="trailing" constant="15" id="WG1-hN-u1g"/>
+                                        <constraint firstItem="Gbb-0L-8ox" firstAttribute="top" secondItem="mrj-xI-u9c" secondAttribute="top" constant="15" id="qsO-zm-GMA"/>
+                                        <constraint firstItem="c1s-RT-fLW" firstAttribute="top" secondItem="Gbb-0L-8ox" secondAttribute="bottom" constant="10" id="ybf-QW-2kT"/>
+                                    </constraints>
+                                </view>
                                 <connections>
                                     <outlet property="dataSource" destination="nn1-3M-RmE" id="u4Y-W7-209"/>
                                     <outlet property="delegate" destination="nn1-3M-RmE" id="I9c-Rb-0ph"/>
@@ -56,11 +84,13 @@
                     </view>
                     <connections>
                         <outlet property="detailsTableView" destination="3AM-1t-3b0" id="Izj-PI-cWb"/>
+                        <outlet property="movieImageView" destination="c1s-RT-fLW" id="Xgs-0c-O2o"/>
+                        <outlet property="movieTitleLabel" destination="Gbb-0L-8ox" id="9se-sf-lzO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rUo-5y-rut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="-189"/>
+            <point key="canvasLocation" x="37.600000000000001" y="-189.3553223388306"/>
         </scene>
     </scenes>
 </document>

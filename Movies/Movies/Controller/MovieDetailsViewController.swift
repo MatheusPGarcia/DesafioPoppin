@@ -11,8 +11,11 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var detailsTableView: UITableView!
-
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieImageView: UIImageView!
+    
     var movieId: String?
+    var movie: MovieDetails?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,15 +23,31 @@ class MovieDetailsViewController: UIViewController {
         if let movieId = movieId {
             let controller = MovieController()
             controller.searchForDetailsById(searchFor: movieId) { (movieDetails) in
-                print(movieDetails)
+                self.movie = movieDetails
+                self.updateInfo()
             }
         }
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func updateInfo() {
+
+        guard let movie = movie else { return }
+
+        DispatchQueue.main.async {
+            self.movieTitleLabel.text = movie.title
+            self.setImage(movie)
+        }
+    }
+
+    func setImage(_ movie: MovieDetails) {
+        guard let imageUrl = movie.imageUrl else { return }
+
+        let controller = MovieController()
+        controller.getImageByUrl(urlString: imageUrl) { (image) in
+            DispatchQueue.main.async {
+                self.movieImageView.image = image
+            }
+        }
     }
     
     @IBAction func goBackWasPressed(_ sender: UIBarButtonItem) {
