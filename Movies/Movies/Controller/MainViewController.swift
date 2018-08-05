@@ -43,6 +43,8 @@ class MainViewController: UIViewController {
         controller.searchForMoviesByName(searchFor: title) { (movies) in
             DispatchQueue.main.async {
 
+                UIViewController.removeSpinner(spinner: self.loadingView)
+
                 guard let movies = movies else {
                     self.changeSubviewsVisibility(tableViewIsVisible: false)
                     self.statusLabel.text = "Movie not found"
@@ -52,7 +54,6 @@ class MainViewController: UIViewController {
 
                 self.changeSubviewsVisibility(tableViewIsVisible: true)
                 self.moviesResponse = movies
-                UIViewController.removeSpinner(spinner: self.loadingView)
                 self.moviesResponseTableView.reloadData()
             }
         }
