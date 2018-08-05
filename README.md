@@ -118,6 +118,6 @@ Requisitos não obrigatórios mas que serão um diferencial:
 A entrega do projeto deve ser feita até o dia 07/08, e a submissão deve ser feita em um repositório no seu próprio Github. 
 Assim que o projeto estiver disponível para avaliação em seu github, nos envie a URL do projeto no e-mail xxxxxxx@xxxxxxxxx.xxx.xx com o assunto [Entrega/iOS] - \<Seu nome>. 
 
-Para qualquer dúvida, sinta-se à vontade para entrar em contato conosco no email desafio@poppinapp.com.br.
+Para qualquer dúvida, sinta-se à vontade para entrar em contato conosco no email xxxxxxx@xxxxxxxxx.xxx.xx.
 
 Boa sorte!
