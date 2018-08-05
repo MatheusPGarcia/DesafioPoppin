@@ -15,17 +15,15 @@ struct Movies: Decodable {
 extension Movies {
 
     enum JsonKey: String, CodingKey {
-        //It's necessary to disable swiftlint identifier_name in this case because enum cases are formatted to match the api json keys
-        // swiftlint:disable identifier_name
-        case Search
-        // swiftlint:enable identifier_name
+
+        case search = "Search"
     }
 
     // Infers that the json key "Search" can be used to generate Movies type
     init(from decoder: Decoder) throws {
 
         let container = try decoder.container(keyedBy: JsonKey.self)
-        let movies = try container.decode([Movie].self, forKey: .Search)
+        let movies = try container.decode([Movie].self, forKey: .search)
         self.movies = movies
     }
 }

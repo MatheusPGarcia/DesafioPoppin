@@ -12,23 +12,67 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var moviesResponseTableView: UITableView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusImage: UIImageView!
     
     var moviesResponse = Movies()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        moviesResponseTableView.isHidden = true
+        statusImage.image = UIImage(named: "Search")
+        statusLabel.text = "Use the search bar to find a movie"
     }
 
     // This func is called whenever a new search is wanted by the user
     func searchForMovies(byTitle title: String) {
+
+        let connection = Reachability.isConnectedToNetwork()
+        if !connection {
+            self.statusLabel.text = "Check your internet connection"
+            self.statusImage.image = UIImage(named: "NoWifi")
+        }
+
         let controller = MovieController()
         controller.searchForMoviesByName(searchFor: title) { (movies) in
             DispatchQueue.main.async {
+
+                guard let movies = movies else {
+                    self.moviesResponseTableView.isHidden = true
+                    self.statusLabel.isHidden = false
+                    self.statusImage.isHidden = false
+                    
+                    self.statusLabel.text = "Movie not found"
+                    self.statusImage.image = UIImage(named: "NoResult")
+                    return
+                }
+
+                self.statusImage.isHidden = true
+                self.statusLabel.isHidden = true
+                self.moviesResponseTableView.isHidden = false
+                
                 self.moviesResponse = movies
                 self.moviesResponseTableView.reloadData()
             }
         }
+    }
+
+    // This func will be responsable to intanciate a new viewController of the type details to show
+    // details about the tableView's selected movie
+    func presentDetails(for movie: Movie) {
+
+        let mainView = UIStoryboard(name: "Main", bundle: nil)
+
+        // Instanciate a new viewController of type details
+        let detailIdentifier = "MovieDetailsStoryboard"
+        guard let destination = mainView.instantiateViewController(withIdentifier: detailIdentifier) as? MovieDetailsViewController else {
+            fatalError("Unable to instantiate ViewController with identifier: \(detailIdentifier)")
+        }
+
+        destination.movieId = movie.imdbId
+
+        self.present(destination, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,5 +132,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.movie = cellMovie
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let selectedMovie = moviesResponse.movies[indexPath.row]
+        presentDetails(for: selectedMovie)
     }
 }
