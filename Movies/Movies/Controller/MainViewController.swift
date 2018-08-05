@@ -29,29 +29,28 @@ class MainViewController: UIViewController {
     // This func is called whenever a new search is wanted by the user
     func searchForMovies(byTitle title: String) {
 
-        loadingView = UIViewController.displaySpinner(onView: self.view)
-
         let status = isInternetConnectionEstablished()
         if !status {
-            changeSubviewsVisibility()
+            changeSubviewsVisibility(tableViewIsVisible: false)
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
-            UIViewController.removeSpinner(spinner: loadingView)
             return
         }
+
+        loadingView = UIViewController.displaySpinner(onView: self.view)
 
         let controller = MovieController()
         controller.searchForMoviesByName(searchFor: title) { (movies) in
             DispatchQueue.main.async {
 
                 guard let movies = movies else {
-                    self.changeSubviewsVisibility()
+                    self.changeSubviewsVisibility(tableViewIsVisible: false)
                     self.statusLabel.text = "Movie not found"
                     self.statusImage.image = UIImage(named: "NoResult")
                     return
                 }
 
-                self.changeSubviewsVisibility()
+                self.changeSubviewsVisibility(tableViewIsVisible: true)
                 self.moviesResponse = movies
                 UIViewController.removeSpinner(spinner: self.loadingView)
                 self.moviesResponseTableView.reloadData()
@@ -65,7 +64,7 @@ class MainViewController: UIViewController {
 
         let status = isInternetConnectionEstablished()
         if !status {
-            self.changeSubviewsVisibility()
+            self.changeSubviewsVisibility(tableViewIsVisible: false)
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
             return
@@ -92,10 +91,10 @@ class MainViewController: UIViewController {
         return false
     }
 
-    func changeSubviewsVisibility() {
-        self.moviesResponseTableView.isHidden = !self.moviesResponseTableView.isHidden
-        self.statusLabel.isHidden = !self.moviesResponseTableView.isHidden
-        self.statusImage.isHidden = !self.moviesResponseTableView.isHidden
+    func changeSubviewsVisibility(tableViewIsVisible show: Bool) {
+        self.moviesResponseTableView.isHidden = !show
+        self.statusLabel.isHidden = show
+        self.statusImage.isHidden = show
     }
 }
 

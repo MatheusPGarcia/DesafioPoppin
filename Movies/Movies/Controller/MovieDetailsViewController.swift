@@ -18,9 +18,12 @@ class MovieDetailsViewController: UIViewController {
     var movie: MovieDetails?
     var movieInfo = [(String, String?)]()
     var ratings = [Rating]()
+    var loadingView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadingView = UIViewController.displaySpinner(onView: self.view)
 
         if let movieId = movieId {
             let controller = MovieController()
@@ -40,6 +43,7 @@ class MovieDetailsViewController: UIViewController {
             self.setImage(movie)
             self.ratings = movie.ratings
             self.createMovieInfoArray()
+            UIViewController.removeSpinner(spinner: self.loadingView)
             self.detailsTableView.reloadData()
         }
     }
