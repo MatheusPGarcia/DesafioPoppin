@@ -28,10 +28,14 @@ class MainViewController: UIViewController {
     // This func is called whenever a new search is wanted by the user
     func searchForMovies(byTitle title: String) {
 
-        let connection = Reachability.isConnectedToNetwork()
-        if !connection {
+        let status = isInternetConnectionEstablished()
+        if !status {
+            self.moviesResponseTableView.isHidden = true
+            self.statusLabel.isHidden = false
+            self.statusImage.isHidden = false
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
+            return
         }
 
         let controller = MovieController()
@@ -62,6 +66,16 @@ class MainViewController: UIViewController {
     // details about the tableView's selected movie
     func presentDetails(for movie: Movie) {
 
+        let status = isInternetConnectionEstablished()
+        if !status {
+            self.moviesResponseTableView.isHidden = true
+            self.statusLabel.isHidden = false
+            self.statusImage.isHidden = false
+            self.statusLabel.text = "Check your internet connection"
+            self.statusImage.image = UIImage(named: "NoWifi")
+            return
+        }
+
         let mainView = UIStoryboard(name: "Main", bundle: nil)
 
         // Instanciate a new viewController of type details
@@ -75,9 +89,12 @@ class MainViewController: UIViewController {
         self.present(destination, animated: true, completion: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func isInternetConnectionEstablished() -> Bool {
+        let connection = Reachability.isConnectedToNetwork()
+        if connection {
+            return true
+        }
+        return false
     }
 }
 
