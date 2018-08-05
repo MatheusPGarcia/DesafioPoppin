@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var statusImage: UIImageView!
     
     var moviesResponse = Movies()
+    var loadingView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,14 @@ class MainViewController: UIViewController {
     // This func is called whenever a new search is wanted by the user
     func searchForMovies(byTitle title: String) {
 
+        loadingView = UIViewController.displaySpinner(onView: self.view)
+
         let status = isInternetConnectionEstablished()
         if !status {
-            changeViewVisibility()
+            changeSubviewsVisibility()
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
+            UIViewController.removeSpinner(spinner: loadingView)
             return
         }
 
@@ -41,14 +45,15 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
 
                 guard let movies = movies else {
-                    self.changeViewVisibility()
+                    self.changeSubviewsVisibility()
                     self.statusLabel.text = "Movie not found"
                     self.statusImage.image = UIImage(named: "NoResult")
                     return
                 }
 
-                self.changeViewVisibility()
+                self.changeSubviewsVisibility()
                 self.moviesResponse = movies
+                UIViewController.removeSpinner(spinner: self.loadingView)
                 self.moviesResponseTableView.reloadData()
             }
         }
@@ -60,7 +65,7 @@ class MainViewController: UIViewController {
 
         let status = isInternetConnectionEstablished()
         if !status {
-            self.changeViewVisibility()
+            self.changeSubviewsVisibility()
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
             return
@@ -87,7 +92,7 @@ class MainViewController: UIViewController {
         return false
     }
 
-    func changeViewVisibility() {
+    func changeSubviewsVisibility() {
         self.moviesResponseTableView.isHidden = !self.moviesResponseTableView.isHidden
         self.statusLabel.isHidden = !self.moviesResponseTableView.isHidden
         self.statusImage.isHidden = !self.moviesResponseTableView.isHidden
