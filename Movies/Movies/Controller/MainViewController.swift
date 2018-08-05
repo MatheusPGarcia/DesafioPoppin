@@ -30,9 +30,7 @@ class MainViewController: UIViewController {
 
         let status = isInternetConnectionEstablished()
         if !status {
-            self.moviesResponseTableView.isHidden = true
-            self.statusLabel.isHidden = false
-            self.statusImage.isHidden = false
+            changeViewVisibility()
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
             return
@@ -43,19 +41,13 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
 
                 guard let movies = movies else {
-                    self.moviesResponseTableView.isHidden = true
-                    self.statusLabel.isHidden = false
-                    self.statusImage.isHidden = false
-                    
+                    self.changeViewVisibility()
                     self.statusLabel.text = "Movie not found"
                     self.statusImage.image = UIImage(named: "NoResult")
                     return
                 }
 
-                self.statusImage.isHidden = true
-                self.statusLabel.isHidden = true
-                self.moviesResponseTableView.isHidden = false
-                
+                self.changeViewVisibility()
                 self.moviesResponse = movies
                 self.moviesResponseTableView.reloadData()
             }
@@ -68,9 +60,7 @@ class MainViewController: UIViewController {
 
         let status = isInternetConnectionEstablished()
         if !status {
-            self.moviesResponseTableView.isHidden = true
-            self.statusLabel.isHidden = false
-            self.statusImage.isHidden = false
+            self.changeViewVisibility()
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
             return
@@ -95,6 +85,12 @@ class MainViewController: UIViewController {
             return true
         }
         return false
+    }
+
+    func changeViewVisibility() {
+        self.moviesResponseTableView.isHidden = !self.moviesResponseTableView.isHidden
+        self.statusLabel.isHidden = !self.moviesResponseTableView.isHidden
+        self.statusImage.isHidden = !self.moviesResponseTableView.isHidden
     }
 }
 
