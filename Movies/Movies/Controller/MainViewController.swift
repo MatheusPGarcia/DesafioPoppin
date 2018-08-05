@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var statusImage: UIImageView!
     
     var moviesResponse = Movies()
+    var loadingView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,33 +31,28 @@ class MainViewController: UIViewController {
 
         let status = isInternetConnectionEstablished()
         if !status {
-            self.moviesResponseTableView.isHidden = true
-            self.statusLabel.isHidden = false
-            self.statusImage.isHidden = false
+            changeSubviewsVisibility(tableViewIsVisible: false)
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
             return
         }
+
+        loadingView = UIViewController.displaySpinner(onView: self.view)
 
         let controller = MovieController()
         controller.searchForMoviesByName(searchFor: title) { (movies) in
             DispatchQueue.main.async {
 
                 guard let movies = movies else {
-                    self.moviesResponseTableView.isHidden = true
-                    self.statusLabel.isHidden = false
-                    self.statusImage.isHidden = false
-                    
+                    self.changeSubviewsVisibility(tableViewIsVisible: false)
                     self.statusLabel.text = "Movie not found"
                     self.statusImage.image = UIImage(named: "NoResult")
                     return
                 }
 
-                self.statusImage.isHidden = true
-                self.statusLabel.isHidden = true
-                self.moviesResponseTableView.isHidden = false
-                
+                self.changeSubviewsVisibility(tableViewIsVisible: true)
                 self.moviesResponse = movies
+                UIViewController.removeSpinner(spinner: self.loadingView)
                 self.moviesResponseTableView.reloadData()
             }
         }
@@ -68,9 +64,7 @@ class MainViewController: UIViewController {
 
         let status = isInternetConnectionEstablished()
         if !status {
-            self.moviesResponseTableView.isHidden = true
-            self.statusLabel.isHidden = false
-            self.statusImage.isHidden = false
+            self.changeSubviewsVisibility(tableViewIsVisible: false)
             self.statusLabel.text = "Check your internet connection"
             self.statusImage.image = UIImage(named: "NoWifi")
             return
@@ -95,6 +89,12 @@ class MainViewController: UIViewController {
             return true
         }
         return false
+    }
+
+    func changeSubviewsVisibility(tableViewIsVisible show: Bool) {
+        self.moviesResponseTableView.isHidden = !show
+        self.statusLabel.isHidden = show
+        self.statusImage.isHidden = show
     }
 }
 

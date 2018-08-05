@@ -30,6 +30,7 @@
 		AE7C1C212114B544000F34AA /* MovieDetailsInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1C202114B544000F34AA /* MovieDetailsInfoTableViewCell.swift */; };
 		AE7C1C232114B556000F34AA /* MovieDetailsRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1C222114B556000F34AA /* MovieDetailsRatingTableViewCell.swift */; };
 		AE7C1C252114E966000F34AA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1C242114E966000F34AA /* Reachability.swift */; };
+		AEAADB2F2117A1780028CD1C /* SpinnerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAADB2E2117A1780028CD1C /* SpinnerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		AE7C1C202114B544000F34AA /* MovieDetailsInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsInfoTableViewCell.swift; sourceTree = "<group>"; };
 		AE7C1C222114B556000F34AA /* MovieDetailsRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRatingTableViewCell.swift; sourceTree = "<group>"; };
 		AE7C1C242114E966000F34AA /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		AEAADB2E2117A1780028CD1C /* SpinnerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 			children = (
 				AE7C1BC92111E25A000F34AA /* UrlFormatter.swift */,
 				AE7C1C242114E966000F34AA /* Reachability.swift */,
+				AEAADB2E2117A1780028CD1C /* SpinnerExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				AE7C1C1921125B40000F34AA /* MovieDetailsViewController.swift in Sources */,
 				AE7C1BD22111F5DF000F34AA /* Movies.swift in Sources */,
 				AE7C1BCA2111E25A000F34AA /* UrlFormatter.swift in Sources */,
+				AEAADB2F2117A1780028CD1C /* SpinnerExtension.swift in Sources */,
 				AE7C1C1421124B96000F34AA /* MovieTableViewCell.swift in Sources */,
 				AE7C1BCE2111E3F2000F34AA /* NetworkConnection.swift in Sources */,
 				AE7C1C1B211278FD000F34AA /* MovieDetails.swift in Sources */,
