@@ -20,7 +20,6 @@ class NetworkConnection {
 
         session.dataTask(with: request) { (data, _, error) in
             if let error = error {
-                // TODO: Handle error in dataTask
                 print("Error fetching json: \(error)")
                 return
             }

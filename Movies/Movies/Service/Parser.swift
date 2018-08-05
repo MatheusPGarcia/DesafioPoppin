@@ -31,7 +31,6 @@ class Parser: NSObject {
             detailsResponse = treatDetails(detailsResponse)
             completion(detailsResponse)
         } catch {
-            // TODO: Handle error in decoding Json
             print("Error decoding Json: \(error)")
         }
     }
