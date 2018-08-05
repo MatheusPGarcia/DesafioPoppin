@@ -45,7 +45,13 @@ class MovieDetailsViewController: UIViewController {
     }
 
     func setImage(_ movie: MovieDetails) {
-        guard let imageUrl = movie.imageUrl else { return }
+
+        guard let imageUrl = movie.imageUrl else {
+
+            let image = UIImage(named: "NoImageAvaible")
+            self.movieImageView.image = image
+            return
+        }
 
         let controller = MovieController()
         controller.getImageByUrl(urlString: imageUrl) { (image) in
