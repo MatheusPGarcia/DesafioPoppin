@@ -23,6 +23,7 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        detailsTableView.isHidden = true
         loadingView = UIViewController.displaySpinner(onView: self.view)
 
         if let movieId = movieId {
@@ -44,6 +45,7 @@ class MovieDetailsViewController: UIViewController {
             self.ratings = movie.ratings
             self.createMovieInfoArray()
             UIViewController.removeSpinner(spinner: self.loadingView)
+            self.detailsTableView.isHidden = false
             self.detailsTableView.reloadData()
         }
     }
