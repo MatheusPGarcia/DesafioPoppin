@@ -24,6 +24,7 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         detailsTableView.isHidden = true
+        detailsTableView.allowsSelection = false
         loadingView = UIViewController.displaySpinner(onView: self.view)
 
         if let movieId = movieId {
